@@ -1,11 +1,14 @@
+
+
 body{
-    font-family: optima;
+    font-family: Courier, monospace;
     background-color: rgb(67, 62, 62);
 }
 
+
 .header{
     background-color: rgb(228, 139, 139);
-    height: 100px;
+    height: 60px;
     width: auto;
     border-style: solid;
     border-color: rgb(168, 0, 0);
@@ -25,12 +28,14 @@ body{
     height: 100px;
     width: 200px;
     font-size: 20px;
+    font-family: Courier, monospace;
 }
 
 #strBtn:hover{
     background-color: rgb(244, 206, 206);
     font-weight: 600;
     cursor: pointer;
+    font-family: Courier, monospace;
 }
 
 #time{
@@ -38,12 +43,11 @@ body{
     width: fit-content;
     margin: 20px;
     border-style: solid;
+    margin: auto;
 }
 
 #question{
     background-color: rgb(228, 139, 139);
-    height: 200px;
-    width: 200px;
 }
 
 #next{
@@ -58,4 +62,9 @@ body{
     font-weight: 600;
     cursor: pointer;
 }
+
+
+
+
+
 
