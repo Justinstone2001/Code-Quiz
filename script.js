@@ -3,7 +3,7 @@ var state = 'start';
 var startEl = document.querySelector("#start");
 var quizEl = document.querySelector("#quiz");
 var endEl = document.querySelector("#end");
-var highScoreEL = document.querySelector("#highScore");
+var scoreEL = document.querySelector("#score");
 var startBtn = document.querySelector("#start button");
 var timeEl = document.querySelector("#time");
 var question = document.querySelector("#quiz #question");
@@ -18,67 +18,65 @@ function displayState() {
     startEl.style.display = 'block';
     quizEl.style.display = 'none';
     endEl.style.display = 'none';
-    highScoreEL.style.display = 'none';
+    score.style.display = 'none';
   }
   if (state === 'quiz') {
     startEl.style.display = 'none';
     quizEl.style.display = 'block';
     endEl.style.display = 'none';
-    highScoreEL.style.display = 'none';
+    score.style.display = 'none';
   }
   if (state === 'end') {
     startEl.style.display = 'none';
     quizEl.style.display = 'none';
     endEl.style.display = 'block';
-    highScoreEL.style.display = 'none';
+    score.style.display = 'none';
     score.textContent = secondsLeft;
   }
-  if (state === 'highScore') {
+  if (state === 'score') {
     startEl.style.display = 'none';
     quizEl.style.display = 'none';
     endEl.style.display = 'none';
-    highScoreEL.style.display = 'block';
+    score.style.display = 'block';
   }
 }
-
-var currentIndex = 0;
 var questions = [
   {
     title: "What data type goes inside of quotes in python?",
     answers: [
-      "String",
-      "Integer", 
-      "Array",
+      "A: String",
+      "B: Integer", 
+      "C: Array",
     ],
     correct: 0 
   },
   {
     title: "If you want to output something to the screen in Python, what would you use? ",
     answers: [
-      "p()",
-      "print()",
-      "write()",
-      "show()",
+      "A: p()",
+      "B: print()",
+      "C: write()",
+      "D: show()",
     ],
     correct: 1 
   },
   {
     title: "Which of the following is an example of a float? ",
     answers: [
-      "3",
-      "143",
-      "5.0",
-      "-2",
+      "A: 3",
+      "B: 143",
+      "C: 5.0",
+      "D: -2",
     ],
     correct: 2 
   },
   {
     title: "How would you call the first value in an array in python? ",
     answers: [
-      "array[1]",
-      "array[1st]",
-      "array[0]",
-      "array[value1]",
+      "A: array[1]",
+      "B: array[1st]",
+      "C: array[0]",
+      "D: array[value1]",
     ],
     correct: 2 
   }
@@ -88,12 +86,12 @@ questionEl.addEventListener("click", function (event) {
   var element = event.target;
   console.log(element);
   if (element.type === 'submit') {
-    if ((element.textContent !== questions[currentIndex].answers[questions[currentIndex].correct])) {
+    if ((element.textContent !== questions[questionNumber].answers[questions[questionNumber].correct])) {
       secondsLeft -= 3;
-      alert("Incorrect!!")
+      alert("Incorrect!! -3 seconds :(")
     }
-    currentIndex++;
-    if (currentIndex === questions.length) {
+    questionNumber++;
+    if (questionNumber === questions.length) {
       state = "end"
       displayState();
     }
@@ -106,11 +104,15 @@ questionEl.addEventListener("click", function (event) {
 function displayQuestions() {
   questionEl.innerHTML = "";
   var questionTitle = document.createElement('h2');
-  questionTitle.textContent = questions[currentIndex].title;
+  questionTitle.textContent = questions[questionNumber].title;
   questionEl.appendChild(questionTitle);
-  for (var i = 0; i < questions[currentIndex].answers.length; i++) {
+  for (var i = 0; i < questions[questionNumber].answers.length; i++) {
     var questionButton = document.createElement('button');
-    questionButton.textContent = questions[currentIndex].answers[i];
+    questionButton.style.marginBottom = "20px";
+    questionButton.style.display = "block";
+    questionButton.style.fontFamily = "Courier, monospace";
+    questionButton.style.fontSize = "20px";
+    questionButton.textContent = questions[questionNumber].answers[i];
     questionEl.appendChild(questionButton);
   }
 }
@@ -123,7 +125,6 @@ function startTime() {
       clearInterval(timerInterval);
       state = "end";
       displayState();
-      
     }
   }, 1000);
 }
