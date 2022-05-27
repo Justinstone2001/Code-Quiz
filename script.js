@@ -8,7 +8,7 @@ var timeEl = document.querySelector("#time");
 var question = document.querySelector("#quiz #question");
 var questionNumber = 0;
 var questionArray = [];
-var secondsLeft = 10;
+var secondsLeft = 30;
 
 function displayState() {
   if (state === 'start') {
@@ -63,14 +63,10 @@ function showQuestions() {
   }
 }
 
-function showQuestions() {
-  v
-}
-
 function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
-    timeEl.textContent = secondsLeft + " seconds left to finish quiz.";
+    timeEl.textContent = secondsLeft + " seconds left to finish quiz...";
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
     }
@@ -88,8 +84,11 @@ startBtn.addEventListener("click", function () {
 });
 
 nextBtn.addEventListener("click", function () {
+  var position = 0;
+  var element = event.target;
   state = 'end';
   displayState();
+  
 });
 
 

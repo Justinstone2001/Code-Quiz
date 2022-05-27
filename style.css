@@ -1,0 +1,61 @@
+body{
+    font-family: optima;
+    background-color: rgb(67, 62, 62);
+}
+
+.header{
+    background-color: rgb(228, 139, 139);
+    height: 100px;
+    width: auto;
+    border-style: solid;
+    border-color: rgb(168, 0, 0);
+    border-radius: 100px;
+    font-size: 35px;
+    text-align: center;
+    font-weight: 720;
+}
+
+#btnBox{
+    margin: auto;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#strBtn{
+    height: 100px;
+    width: 200px;
+    font-size: 20px;
+}
+
+#strBtn:hover{
+    background-color: rgb(244, 206, 206);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#time{
+    background-color: rgb(255, 0, 0);
+    width: fit-content;
+    margin: 20px;
+    border-style: solid;
+}
+
+#question{
+    background-color: rgb(228, 139, 139);
+    height: 200px;
+    width: 200px;
+}
+
+#next{
+    margin-top: 50px;
+    height: 100px;
+    width: 200px;
+    font-size: 20px;
+}
+
+#next:hover{
+    background-color: rgb(244, 206, 206);
+    font-weight: 600;
+    cursor: pointer;
+}
+
