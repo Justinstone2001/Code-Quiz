@@ -3,8 +3,12 @@ var startEl = document.querySelector("#start");
 var quizEl = document.querySelector("#quiz");
 var endEl = document.querySelector("#end");
 var startBtn = document.querySelector("#start button");
-var quizTitle = document.querySelector("#quiz #title");
-var timeEl = document.querySelector("#time")
+var nextBtn = document.querySelector("#next");
+var timeEl = document.querySelector("#time");
+var question = document.querySelector("#quiz #question");
+var questionNumber = 0;
+var questionArray = [];
+var secondsLeft = 10;
 
 function displayState() {
   if (state === 'start') {
@@ -16,15 +20,52 @@ function displayState() {
     startEl.style.display = 'none';
     quizEl.style.display = 'block';
     endEl.style.display = 'none';
+    showQuestions();
   }
   if (state === 'end') {
     startEl.style.display = 'none';
     quizEl.style.display = 'none';
     endEl.style.display = 'block';
   }
+
 }
 
-var secondsLeft = 5;
+function showQuestions() {
+  var questionEl = document.querySelector("#question");
+  var currentIndex = 0; // current question
+  var questions = [
+    {
+      title: "Question 1",
+      answers: [
+        "Q1 - Answer 1",
+        "Q1 - Answer 2", // index 1 of array is the correct answer 
+        "Q1 - Answer 3",
+      ],
+      correct: 1 // index of correct answer
+    },
+    {
+      title: "Question 2",
+      answers: [
+        "Q2 - Answer 1",
+        "Q2 - Answer 2",
+        "Q2 - Answer 3", // index 2 of array is the correct answer 
+      ],
+      correct: 2 // index of correct answer
+    }
+  ];
+
+  var listOfAnswers = questions[currentIndex].answers;
+
+  for (var i = 0; i < listOfAnswers.length; i++) {
+    var buttonEl = document.createElement("button");
+    buttonEl.textContent = listOfAnswers[i];
+    questionEl.appendChild(buttonEl);
+  }
+}
+
+function showQuestions() {
+  v
+}
 
 function setTime() {
   var timerInterval = setInterval(function () {
@@ -44,14 +85,13 @@ startBtn.addEventListener("click", function () {
   state = 'quiz';
   displayState();
   setTime();
-  
-  
 });
 
-quizTitle.addEventListener("click", function () {
+nextBtn.addEventListener("click", function () {
   state = 'end';
   displayState();
 });
+
 
 init();
 
